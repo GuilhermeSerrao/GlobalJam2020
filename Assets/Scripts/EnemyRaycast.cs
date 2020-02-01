@@ -53,7 +53,7 @@ public class EnemyRaycast : MonoBehaviour
         var distance = heading.magnitude;
         var direction = heading / distance;
 
-        hit = Physics2D.Raycast(transform.position, direction, detectRange);
+        hit = Physics2D.Raycast(transform.position, direction, detectRange, 1 << 8 | 1 << 13);
         
 
     }

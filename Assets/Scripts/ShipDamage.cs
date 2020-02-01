@@ -1,35 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ShipDamage : MonoBehaviour
 {
     [SerializeField]
     private float health;
+    private float currentHealth;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Image healthBar;
+
+    private void Start()
     {
-        
+        currentHealth = health;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            currentHealth = 0;
+        }
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene("DeathScreen", LoadSceneMode.Single);
+        }
     }
 
     public void dealDamage(float damage)
     {
         if (health > 0)
         {
-            health -= damage;
+            currentHealth -= damage;
+            UpdateBar();
         }
 
         if (health <= 0)
         {
-            print("Destroyed");
+            SceneManager.LoadScene("DeathScreen", LoadSceneMode.Single);
         }
         
+    }
+
+    private void UpdateBar()
+    {
+        healthBar.fillAmount = currentHealth / health;
     }
 }

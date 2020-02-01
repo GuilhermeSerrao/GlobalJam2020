@@ -13,6 +13,8 @@ public class PlayerShoot : MonoBehaviour
     private Transform shootPoint;
     [SerializeField]
     private float fireRate;
+    [SerializeField]
+    private float damage;
 
     private float shootTimer;
 
@@ -30,7 +32,9 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetKey(KeyCode.X) && canShoot)
         {
             var newBullet = Instantiate(bullet, shootPoint.position, playerArt.transform.rotation);
+            newBullet.damage = damage;
             newBullet.speed = bulletSpeed;
+
             canShoot = false;
         }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed;
+    public float damage;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<EnemyHealth>())
+        {
+            collision.GetComponent<EnemyHealth>().DealDamage(damage);
+        }
         Destroy(gameObject);
     }
 }

@@ -126,9 +126,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1060
-        width: 408
-        height: 530
+        y: 1090
+        width: 517
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,7 +136,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 101dd25c3a5f5ea4d88b38ecf116a563
+      spriteID: 2b0ef9fd214092f47bbc422c0ea6eb44
       internalID: -1206620052044607718
       vertices: []
       indices: 
@@ -146,10 +146,10 @@ TextureImporter:
       name: Player_RunWithGun_1
       rect:
         serializedVersion: 2
-        x: 408
-        y: 1060
-        width: 408
-        height: 530
+        x: 517
+        y: 1090
+        width: 517
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,7 +157,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2411c3f9102966844a034c6f8b3ee880
+      spriteID: e1045244c2d424445971a9dbfa58e0a1
       internalID: -2810480778790423318
       vertices: []
       indices: 
@@ -167,10 +167,10 @@ TextureImporter:
       name: Player_RunWithGun_2
       rect:
         serializedVersion: 2
-        x: 816
-        y: 1060
-        width: 408
-        height: 530
+        x: 1034
+        y: 1090
+        width: 517
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,7 +178,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6790ca2d2f0c58a4eb0f191abecec366
+      spriteID: 570776c2d33b90c4d92d71febdeb7319
       internalID: -6487389945083972633
       vertices: []
       indices: 
@@ -189,9 +189,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 530
-        width: 408
-        height: 530
+        y: 545
+        width: 517
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,7 +199,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b58e714a170a08444bba7972786f289a
+      spriteID: 7d25c780cd70fcf4980a6d6fb5afee0c
       internalID: -7913625122130936290
       vertices: []
       indices: 
@@ -209,10 +209,10 @@ TextureImporter:
       name: Player_RunWithGun_4
       rect:
         serializedVersion: 2
-        x: 408
-        y: 530
-        width: 408
-        height: 530
+        x: 517
+        y: 545
+        width: 517
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,7 +220,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5475b6671da0f10429269f02cf065bd1
+      spriteID: d30d18a09f1175f41945c314299be888
       internalID: -1458546191352417884
       vertices: []
       indices: 
@@ -230,10 +230,10 @@ TextureImporter:
       name: Player_RunWithGun_5
       rect:
         serializedVersion: 2
-        x: 816
-        y: 530
-        width: 408
-        height: 530
+        x: 1034
+        y: 545
+        width: 517
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,7 +241,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26d5fb838dc06474b9182415d496a24c
+      spriteID: 1b384e90cde94b04992a502b7c914063
       internalID: -6140057637883778996
       vertices: []
       indices: 
@@ -253,8 +253,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 408
-        height: 530
+        width: 517
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,7 +262,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d448652e9bc71e74bb850caff8ef0b62
+      spriteID: e40ce03bd5ff83a4dafe1f00ac2fc7ed
       internalID: 3187515570993784034
       vertices: []
       indices: 
@@ -272,10 +272,10 @@ TextureImporter:
       name: Player_RunWithGun_7
       rect:
         serializedVersion: 2
-        x: 408
+        x: 517
         y: 0
-        width: 408
-        height: 530
+        width: 517
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,7 +283,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5684c89a8aab6a48aa5b586bc6d0fcf
+      spriteID: 66b45a5ddba1ca54ea7ae6f3c54f07d6
       internalID: -9206436194157594516
       vertices: []
       indices: 

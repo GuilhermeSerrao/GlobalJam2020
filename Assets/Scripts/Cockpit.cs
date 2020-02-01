@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Cockpit : MonoBehaviour
 {
-
+    private CameraMovement camera;
     private bool piloting = false;
     private bool hasPlayer;
     private PlayerMovement player;
     // Start is called before the first frame update
     void Start()
     {
+        camera = FindObjectOfType<CameraMovement>();
         player = FindObjectOfType<PlayerMovement>();
     }
 
@@ -19,9 +20,10 @@ public class Cockpit : MonoBehaviour
     {
         if (hasPlayer)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                piloting = true;
+                piloting = !piloting;
+                camera.ChangeFlying(piloting);
                 player.SetPiloting(piloting);
             }
         }

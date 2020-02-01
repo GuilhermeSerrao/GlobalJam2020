@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    private Animator anim;
 
     [SerializeField]
     private float horizontalSpeed;
@@ -17,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private float jetPack;
-    private float JetPackStart;
+    private float jetPackStart;
 
     [SerializeField]
     private Image fuelBar;
@@ -38,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
   
     void Start()
     {
-        JetPackStart = jetPack;
+        
+        jetPackStart = jetPack;
         rigidBody = GetComponent<Rigidbody2D>();   
     }
 
@@ -52,17 +55,19 @@ public class PlayerMovement : MonoBehaviour
                 playerArt.transform.rotation = Quaternion.Euler(0, 0, 0);
                 rigidBody.velocity = new Vector2(horizontalSpeed, rigidBody.velocity.y);
                 moving = true;
-
+                anim.SetBool("Running", true);
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 playerArt.transform.rotation = Quaternion.Euler(0, 180, 0);
                 rigidBody.velocity = new Vector2(-horizontalSpeed, rigidBody.velocity.y);
                 moving = true;
+                anim.SetBool("Running", true);
             }
             else
             {
                 moving = false;
+                anim.SetBool("Running", false);
             }
 
             if (!moving)
@@ -85,29 +90,49 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKey(KeyCode.UpArrow) && jetPack > 0)
             {
+                
                 flying = true;
+                anim.SetBool("Flying", true);
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, airSpeed);
             }
 
             if (flying)
             {
+                fuelBar.gameObject.SetActive(true);
                 airSpeed += verticalAddSpeed;
                 jetPack -= jetPackConsumption;
                 UpdateFuelBar();
             }
             else if (!flying)
             {
-
+                
                 airSpeed = 0;
                 CheckGround();
-                if (grounded && jetPack < JetPackStart)
+                if (grounded && jetPack < jetPackStart)
                 {
+                    fuelBar.gameObject.SetActive(true);
                     jetPack += jetPackConsumption;
                     UpdateFuelBar();
                 }
             }
 
+            CheckGround();
+            if (grounded)
+            {
+                anim.SetBool("Flying", false);
+                if (jetPack >= jetPackStart)
+                {
+                    fuelBar.gameObject.SetActive(false);
+                }
+                
+            }
+            else
+            {
+                anim.SetBool("Flying", true);
+            }
+
             flying = false;
+            
         }
     }
 
@@ -118,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void UpdateFuelBar()
     {
-        fuelBar.fillAmount = jetPack / JetPackStart;
+        fuelBar.fillAmount = jetPack / jetPackStart;
     }
 
     public void SetPiloting(bool state)

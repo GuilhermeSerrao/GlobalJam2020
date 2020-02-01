@@ -12,18 +12,34 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private float maxHealth;
 
+    [SerializeField]
+    private float imuneTime;
+    private float time;
+    private bool canTakeDamage = true;
+
     private float currentHealth;
 
     private void Start()
     {
+        time = imuneTime;
+        healthbar.gameObject.SetActive(false);
         currentHealth = maxHealth;
     }
     private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
+    {      
+
+        if (time > 0 && !canTakeDamage)
         {
-            currentHealth -= 0.5f;
-            UpdateHealthBar();
+            time -= Time.deltaTime;
+        }
+        else if(time <= 0)
+        {
+            canTakeDamage = true;
+        }
+
+        if (currentHealth < maxHealth)
+        {
+            healthbar.gameObject.SetActive(true);
         }
 
         if (currentHealth <= 0)
@@ -34,5 +50,17 @@ public class PlayerHealth : MonoBehaviour
     public void UpdateHealthBar()
     {
         healthbar.fillAmount = currentHealth / maxHealth;
+    }
+
+    public void DealDamage(float damage)
+    {
+        if (canTakeDamage)
+        {
+            canTakeDamage = false;
+            currentHealth -= damage;
+            UpdateHealthBar();
+            
+        }       
+        
     }
 }
