@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HullDamage : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class HullDamage : MonoBehaviour
 
     [SerializeField]
     private float repairTime;
+    private float remainRepair;
+
+    [SerializeField]
+    private Image repairBar;
 
     [SerializeField]
     private float repairSpeed;
@@ -23,6 +28,8 @@ public class HullDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        remainRepair = repairTime;
+        repairBar.gameObject.SetActive(false); 
         startTimer = timer;
         ship = FindObjectOfType<ShipDamage>();
     }
@@ -45,15 +52,14 @@ public class HullDamage : MonoBehaviour
             if (Input.GetKey(KeyCode.C))
             {
                 repairTime -= repairSpeed;
+                UpdateBar();
             }
         }
 
         if (repairTime <= 0)
         {
             Destroy(gameObject);
-        }
-
-        
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,6 +67,7 @@ public class HullDamage : MonoBehaviour
         if (collision.GetComponent<PlayerMovement>())
         {
             hasPlayer = true;
+            repairBar.gameObject.SetActive(true);
         }
     }
 
@@ -69,6 +76,12 @@ public class HullDamage : MonoBehaviour
         if (collision.GetComponent<PlayerMovement>())
         {
             hasPlayer = false;
+            repairBar.gameObject.SetActive(false);
         }
+    }
+
+    private void UpdateBar()
+    {
+        repairBar.fillAmount = repairTime / remainRepair;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,11 +20,12 @@ public class PlayerMovement : MonoBehaviour
     private float JetPackStart;
 
     [SerializeField]
-    private float jetPackConsumption;
+    private Image fuelBar;
 
+    [SerializeField]
+    private float jetPackConsumption;
    
     public GameObject playerArt;
-
     
     private float airSpeed;
 
@@ -32,78 +34,81 @@ public class PlayerMovement : MonoBehaviour
     private bool flying;
 
     private bool grounded;
-   
-
-    // Start is called before the first frame update
+    private bool piloting = false;
+  
     void Start()
     {
         JetPackStart = jetPack;
         rigidBody = GetComponent<Rigidbody2D>();   
     }
 
-    // Update is called once per frame
     void Update()
-    {      
+    {
+        if (!piloting)
+        {
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            playerArt.transform.rotation = Quaternion.Euler(0, 180, 0);
-            rigidBody.velocity = new Vector2(horizontalSpeed, rigidBody.velocity.y);
-            moving = true;
-           
-        } else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            playerArt.transform.rotation = Quaternion.Euler(0, 0, 0);
-            rigidBody.velocity = new Vector2(-horizontalSpeed, rigidBody.velocity.y);
-            moving = true;
-        }
-        else
-        {
-            moving = false;
-        }
-
-        if (!moving)
-        {
-            CheckGround();
-
-            if (grounded)
+            if (Input.GetKey(KeyCode.RightArrow))
             {
-                rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
-                           
-            }            
-            
-        }
-        CheckGround();
+                playerArt.transform.rotation = Quaternion.Euler(0, 0, 0);
+                rigidBody.velocity = new Vector2(horizontalSpeed, rigidBody.velocity.y);
+                moving = true;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
-        {
-            CheckGround();
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jump);            
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow) && jetPack > 0)   
-        {                    
-            flying = true;            
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, airSpeed);
-        }
-
-        if (flying)
-        {
-            airSpeed += verticalAddSpeed;
-            jetPack -= jetPackConsumption;
-        }
-        else if (!flying)
-        {
-
-            airSpeed = 0;
-            CheckGround();
-            if (grounded && jetPack < JetPackStart)
-            {
-              jetPack += jetPackConsumption;                
             }
-        }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                playerArt.transform.rotation = Quaternion.Euler(0, 180, 0);
+                rigidBody.velocity = new Vector2(-horizontalSpeed, rigidBody.velocity.y);
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+            }
 
-        flying = false;    
+            if (!moving)
+            {
+                CheckGround();
+
+                if (grounded)
+                {
+                    rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+                }
+
+            }
+            CheckGround();
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) && grounded)
+            {
+                CheckGround();
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, jump);
+            }
+
+            if (Input.GetKey(KeyCode.UpArrow) && jetPack > 0)
+            {
+                flying = true;
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, airSpeed);
+            }
+
+            if (flying)
+            {
+                airSpeed += verticalAddSpeed;
+                jetPack -= jetPackConsumption;
+                UpdateFuelBar();
+            }
+            else if (!flying)
+            {
+
+                airSpeed = 0;
+                CheckGround();
+                if (grounded && jetPack < JetPackStart)
+                {
+                    jetPack += jetPackConsumption;
+                    UpdateFuelBar();
+                }
+            }
+
+            flying = false;
+        }
     }
 
     private void CheckGround()
@@ -111,4 +116,13 @@ public class PlayerMovement : MonoBehaviour
         grounded = transform.GetChild(0).GetComponent<GroundChecker>().ground;
     }
     
+    private void UpdateFuelBar()
+    {
+        fuelBar.fillAmount = jetPack / JetPackStart;
+    }
+
+    public void SetPiloting(bool state)
+    {
+        piloting = state;
+    }
 }

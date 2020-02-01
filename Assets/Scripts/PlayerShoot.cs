@@ -16,7 +16,7 @@ public class PlayerShoot : MonoBehaviour
 
     private float shootTimer;
 
-    private bool canShoot;
+    private bool canShoot = true;
 
     private GameObject playerArt;
 
@@ -27,7 +27,14 @@ public class PlayerShoot : MonoBehaviour
     }
     private void Update()
     {
-        if (shootTimer > 0)
+        if (Input.GetKey(KeyCode.X) && canShoot)
+        {
+            var newBullet = Instantiate(bullet, shootPoint.position, playerArt.transform.rotation);
+            newBullet.speed = bulletSpeed;
+            canShoot = false;
+        }
+
+        if (shootTimer > 0 && !canShoot)
         {
             shootTimer -= Time.deltaTime;
         }
@@ -38,11 +45,6 @@ public class PlayerShoot : MonoBehaviour
         }
         
 
-        if (Input.GetKey(KeyCode.X) && canShoot)
-        {
-            var newBullet = Instantiate(bullet, shootPoint.position, playerArt.transform.rotation);
-            newBullet.speed = bulletSpeed;
-            canShoot = false;
-        }
+        
     }
 }
