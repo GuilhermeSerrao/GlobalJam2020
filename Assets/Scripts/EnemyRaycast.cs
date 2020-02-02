@@ -26,7 +26,6 @@ public class EnemyRaycast : MonoBehaviour
         Raycast();
         if (hit)
         {
-            print(hit.collider.gameObject.name);
             if (hit.collider.gameObject.GetComponent<PlayerMovement>())
             {
                 spoted = true;

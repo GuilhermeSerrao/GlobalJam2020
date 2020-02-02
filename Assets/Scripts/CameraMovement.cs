@@ -53,7 +53,7 @@ public class CameraMovement : MonoBehaviour
         else
         {
             flying = false;
-            transform.position = player.gameObject.transform.position;
+            transform.position = cameraZero.transform.position;
             GetComponent<Camera>().orthographicSize = smallSize;
         }
         

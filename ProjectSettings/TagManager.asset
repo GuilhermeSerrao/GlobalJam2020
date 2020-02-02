@@ -22,8 +22,8 @@ TagManager:
   - EnemyRaycast
   - Ground
   - GroundOnly
-  - 
-  - 
+  - Room
+  - EnemySpawner
   - 
   - 
   - 

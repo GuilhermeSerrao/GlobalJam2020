@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -22,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         time = imuneTime;
-        healthbar.gameObject.SetActive(false);
+        healthbar.transform.parent.gameObject.SetActive(false);
         currentHealth = maxHealth;
     }
     private void Update()
@@ -39,12 +40,12 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth < maxHealth)
         {
-            healthbar.gameObject.SetActive(true);
+            healthbar.transform.parent.gameObject.SetActive(true);
         }
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("DeathScreen", LoadSceneMode.Single);
         }
     }
     public void UpdateHealthBar()

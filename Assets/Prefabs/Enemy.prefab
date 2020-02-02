@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059219606}
-  - component: {fileID: 1059219607}
+  - component: {fileID: 7915113381993333189}
   m_Layer: 14
   m_Name: GroundColision
   m_TagString: Untagged
@@ -31,8 +31,8 @@ Transform:
   m_Father: {fileID: 4148439710214150983}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1059219607
-CircleCollider2D:
+--- !u!70 &7915113381993333189
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -40,13 +40,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 1059219605}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: ac8ea5086c8b0fd4895ca6f74959150f, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 2.75, y: 1.44}
+  m_Direction: 1
 --- !u!1 &4148439708707521893
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f397b91457cf14d83cb03a5d0bcdcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectRange: 12
+  detectRange: 10
 --- !u!1 &4148439710214150968
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,9 +183,9 @@ GameObject:
   - component: {fileID: 4148439710214150980}
   - component: {fileID: 4148439710214150981}
   - component: {fileID: 4148439710214150971}
-  - component: {fileID: 4148439710214150970}
   - component: {fileID: 4148439710214150982}
   - component: {fileID: 1364966340}
+  - component: {fileID: 7710052464280548768}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
@@ -277,7 +277,7 @@ MonoBehaviour:
   damageToSpawn: {fileID: 2192400985941474573, guid: 68f6bf41924da8f4fb323b8657c8f702,
     type: 3}
   player: {fileID: 0}
-  startTimer: 1
+  startTimer: 4
   speed: 3
 --- !u!50 &4148439710214150971
 Rigidbody2D:
@@ -300,22 +300,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &4148439710214150970
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4148439710214150968}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: ac8ea5086c8b0fd4895ca6f74959150f, type: 2}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &4148439710214150982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,3 +332,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &7710052464280548768
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4148439710214150968}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.68, y: 1.35}
+  m_Direction: 1
